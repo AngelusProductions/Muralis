@@ -1,6 +1,8 @@
 import { shallow, mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
+import fetch from 'isomorphic-fetch';
+import fetchMock from 'fetch-mock';
 import 'jasmine-ajax';
 
 Object.assign(global, {
@@ -8,6 +10,7 @@ Object.assign(global, {
   mount,
   React,
   shallow,
+  fetch
 });
 
 beforeEach(() => {
@@ -23,7 +26,7 @@ let requireAll = requireContext => {
 requireAll(require.context('./', true, /^((?!testHelper).)*\.jsx?$/));
 
 // require all js files except main.js in the src folder
-requireAll(require.context('../../app/javascript', true, /^((?!application).)*\.jsx?$/));
+requireAll(require.context('../../app/javascript/react/test', true, /^((?!application).)*\.jsx?$/));
 
 // output to the browser's console when the tests run
 console.info(`TESTS RAN AT ${new Date().toLocaleTimeString()}`);
