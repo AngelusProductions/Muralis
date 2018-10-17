@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         flash[:notice] = @user.errors.full_messages.join("\n")
         render :new
   end
+end
 
   private
 
