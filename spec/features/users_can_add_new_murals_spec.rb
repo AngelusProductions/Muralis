@@ -21,7 +21,7 @@ feature "visitors can add new murals" do
   end
 
   scenario "user does not provide expected information for a mural" do
-    @user = User.create!(first_name: "Josh",last_name: "Wyman",email:"google1@gmail.com",password:"123456")
+    @user = User.create!(first_name: "Josh", last_name: "Wyman", email:"google1@gmail.com", password:"123456")
     sign_in @user
 
     visit new_mural_path
@@ -32,6 +32,5 @@ feature "visitors can add new murals" do
     expect(page).to have_content "Description can't be blank"
     expect(page).to have_content "Location can't be blank"
     expect(page).to have_content "Photo can't be blank"
-
   end
 end
