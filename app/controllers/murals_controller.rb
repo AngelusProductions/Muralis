@@ -18,9 +18,7 @@ class MuralsController < ApplicationController
     else
       render new_mural_path
     end
-
   end
-
 
   private
 

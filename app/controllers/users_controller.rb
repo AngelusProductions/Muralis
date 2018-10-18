@@ -5,12 +5,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-      if @user.save
-        flash[:notice] = 'Welcome! You have signed up successfully.'
-        redirect_to root_path
-      else
-        flash[:notice] = @user.errors.full_messages.join("\n")
-        render :new
+    if @user.save
+      flash[:notice] = 'Welcome! You have signed up successfully.'
+      redirect_to root_path
+    else
+      flash[:notice] = @user.errors.full_messages.join("\n")
+      render :new
+    end
   end
 
   private

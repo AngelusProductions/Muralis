@@ -1,6 +1,6 @@
 <h4>New Mural Form</h4>
 
-<% if @mural.errors.empty? == false %>
+<% if @mural.errors %>
   <div name = "errorDiv">
     <ul name = "errors">
       <% @mural.errors.full_messages.each do |message| %>

@@ -4,8 +4,13 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+<<<<<<< HEAD
 # Ignore environment variables
 .env
+=======
+# Ignore public
+/public/uploads
+>>>>>>> 63ea9fc28f9e2ec7a34ba99d1013e3c19af6e2bd
 
 # Ignore bundler config.
 /.bundle
