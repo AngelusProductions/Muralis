@@ -1,7 +1,5 @@
 import React from 'react';
 import { browserHistory, Link } from 'react-router';
-import fetch from 'isomorphic-fetch';
-import fetchMock from 'fetch-mock';
 
 const MuralShow = (props) => {
   return(

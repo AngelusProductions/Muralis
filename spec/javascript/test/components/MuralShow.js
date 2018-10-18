@@ -1,13 +1,15 @@
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
-import MuralsShowContainer from '../../react/containers/MuralsShowContainer';
-import MuralShow from '../../react/components/MuralShow';
+import MuralsShowContainer from '../../../../app/javascript/react/containers/MuralsShowContainer';
+import MuralShow from '../../../../app/javascript/react/components/MuralShow';
+import fetchMock from 'fetch-mock'
 
-describe('Mural', () => {
+describe('MuralShow', () => {
   let wrapper;
 
   beforeEach(() => {
+    jasmineEnzyme();
 
     wrapper = mount(
       <MuralShow

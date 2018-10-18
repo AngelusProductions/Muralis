@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
 import MuralsShowContainer from '../containers/MuralsShowContainer';
-import MuralsIndexContainer from '../containers/MuralsIndexContainer';
 
 const App = (props) => {
   return (

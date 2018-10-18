@@ -2,10 +2,9 @@
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
-import MuralsShowContainer from '../../react/containers/MuralsShowContainer';
-import MuralShow from '../../react/components/MuralShow';
-import fetch from 'isomorphic-fetch';
-import fetchMock from 'fetch-mock';
+import MuralsShowContainer from '../../../../app/javascript/react/containers/MuralsShowContainer';
+import MuralShow from '../../../../app/javascript/react/components/MuralShow';
+import fetchMock from 'fetch-mock'
 
 describe('MuralsShowContainer', () => {
   let wrapper;
@@ -35,6 +34,7 @@ describe('MuralsShowContainer', () => {
     });
 
     spyOn(MuralsShowContainer.prototype, 'componentDidMount').and.callThrough();
+    let cdm = jasmine.createSpy('componentDidMount'); //<-- this is new
 
   });
 
@@ -45,16 +45,6 @@ describe('MuralsShowContainer', () => {
   })
 
   it('should render a Mural Component', () => {
-    expect(wrapper.find(Mural)).toBePresent();
-  });
-
-  describe('componentDidMount', () => {
-    it('should be invoked when page renders', () => {
-      expect(MuralsShowContainer.prototype.componentDidMount).toHaveBeenCalled();
-    });
-
-    it('should change the Mural object in the state', () => {
-      expect(wrapper.state()).exists().toEqual(true);
-    });
+    expect(wrapper.find(MuralShow)).toBePresent();
   });
 });
