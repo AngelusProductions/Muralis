@@ -1,0 +1,81 @@
+#navbar-text, h1, body, button, #sign a {
+  font-family: "Andale Mono";
+}
+
+.top-bar {
+  background-color: #6D6A75;
+  border-radius: 25px;
+}
+
+#sign a {
+    background-color: #6D6A75;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+#sign #sign-up {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+
+
+ul {
+  .right {
+    background-color: #6D6A75;
+  }
+}
+
+body {
+  margin: auto;
+  text-align: center;
+  background-color: #37323E;
+}
+
+.flash {
+  color: red;
+  background-color: white;
+  border-radius: 10px;
+}
+
+h1 {
+  color: white;
+}
+
+img {
+  max-width: 50%;
+  max-height: 50%;
+  border-radius: 50px;
+  border-style: solid;
+  border-width: .75rem;
+  border-color: #FFF;
+}
+
+img:hover {
+  border-color: #6D6A75;
+}
+
+#feed-item {
+  margin-top: 3rem;
+}
+
+.mural-feed {
+  list-style: none;
+}
+
+li {
+  font-size: 2vw;
+  color: white;
+}
+
+button {
+  border-radius: 17px;
+  background-color: #6D6A75;
+  margin-top: 3rem;
+  a {
+    color: #DE9E36;
+  }
+}
+
+button:hover {
+  background-color: white;
+}
