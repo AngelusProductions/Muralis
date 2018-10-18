@@ -1,5 +1,10 @@
 class Mural < ApplicationRecord
-  validates_presence_of :title, :description, :location, :photo, :upvotes, :downvotes
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :location, presence: true
+  validates :photo, presence: true
+  validates :upvotes, presence: true
+  validates :downvotes, presence: true
 
   belongs_to :user
   has_many :reviews

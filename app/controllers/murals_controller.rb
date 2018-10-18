@@ -5,6 +5,7 @@ class MuralsController < ApplicationController
     @murals = Mural.all
   end
 
+<<<<<<< HEAD
   def new
     @mural = Mural.new
   end
@@ -26,5 +27,9 @@ class MuralsController < ApplicationController
 
   def mural_params
     params.require(:mural).permit(:title,:photo,:description,:location)
+=======
+  def show
+    @mural = Mural.find(params[:id])
+>>>>>>> d314ac74b8cb631e9789744944494be6f5076145
   end
 end
