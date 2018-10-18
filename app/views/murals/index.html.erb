@@ -1,0 +1,9 @@
+
+<p>Index Page!</p>
+  <ul>
+    <% @murals.each do |mural| %>
+    <li><%= mural.title %></li>
+    <% end %>
+  </ul>
+
+<button type="button" name="button"> <%= link_to "Add a mural", new_mural_path %> </button>
