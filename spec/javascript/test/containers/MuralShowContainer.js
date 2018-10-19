@@ -2,20 +2,16 @@
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
-import MuralsShowContainer from '../../../../app/javascript/react/containers/MuralsShowContainer';
+import MuralShowContainer from '../../../../app/javascript/react/containers/MuralShowContainer';
 import MuralShow from '../../../../app/javascript/react/components/MuralShow';
 import fetchMock from 'fetch-mock'
 
-describe('MuralsShowContainer', () => {
+describe('MuralShowContainer', () => {
   let wrapper;
   let mural;
 
   beforeEach(() => {
     jasmineEnzyme();
-
-    wrapper = mount(<MuralsShowContainer
-                      params={{ id: 1 }}
-                    />);
 
     mural = {
       id: 1,
@@ -28,13 +24,14 @@ describe('MuralsShowContainer', () => {
       user_id: 1
     }
 
-    fetchMock.get('/api/v1/murals/1', {
+    fetchMock.get(`/api/v1/murals/${mural.id}`, {
       status: 200,
       body: mural
     });
 
-    spyOn(MuralsShowContainer.prototype, 'componentDidMount').and.callThrough();
-    let cdm = jasmine.createSpy('componentDidMount'); //<-- this is new
+    wrapper = mount(<MuralShowContainer
+                      params={{ id: mural.id }}
+                    />);
 
   });
 
@@ -46,5 +43,14 @@ describe('MuralsShowContainer', () => {
 
   it('should render a Mural Component', () => {
     expect(wrapper.find(MuralShow)).toBePresent();
+  });
+
+  it('should render correct text after the fetch call', (done) => {
+    setTimeout( () => {
+      expect(wrapper.find('h1').text()).toMatch(mural.title)
+      expect(wrapper.find('h5').text()).toMatch(mural.location)
+      expect(wrapper.find('p').text()).toMatch(mural.description)
+      done()
+    }, 0)
   });
 });
