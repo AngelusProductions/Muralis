@@ -4,8 +4,8 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore public
-/public/uploads
+# Ignore environment variables
+.env
 
 # Ignore bundler config.
 /.bundle
@@ -25,6 +25,8 @@
 
 /public/assets
 .byebug_history
+# Ignore uploaded files in test
+/public/uploads
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

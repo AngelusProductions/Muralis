@@ -6,6 +6,8 @@ class Mural < ApplicationRecord
   validates :upvotes, presence: true
   validates :downvotes, presence: true
 
+  mount_uploader :photo, MuralPhotoUploader
+
   belongs_to :user
   has_many :reviews
 end
