@@ -12,29 +12,22 @@
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
 }
-#sign #sign-up {
+
+#sign #sign-up a {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-}
-
-
-
-ul {
-  .right {
-    background-color: #6D6A75;
-  }
-}
-
-body {
-  margin: auto;
-  text-align: center;
-  background-color: #37323E;
 }
 
 .flash {
   color: red;
   background-color: white;
   border-radius: 10px;
+}
+
+body {
+  margin: auto;
+  text-align: center;
+  background-color: #37323E;
 }
 
 h1 {
