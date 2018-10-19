@@ -11,4 +11,14 @@ FactoryBot.define do
     username { 'user' }
   end
 
+  factory :mural do
+    title { 'title' }
+    description { 'description' }
+    location { 'location' }
+    photo { 'photo' }
+    upvotes { 'upvotes' }
+    downvotes { 'downvotes' }
+    user_id { Mural.all.last.id }
+  end
+
 end

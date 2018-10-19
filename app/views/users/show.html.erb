@@ -1,0 +1,13 @@
+  <img id="user-photo" src=" <%= @user.user_photo.url %>">
+  <h1> <%= @name %> </h1>
+  <h5> <%= @user.username %></h5>
+
+<ul>
+<% @user.murals.each do |mural| %>
+  <li>
+    <%= mural.title %> - <%= mural.location %>
+    <img src="<%= mural.photo %>">
+    <%= mural.description %>
+  </li>
+<% end %>
+</ul>

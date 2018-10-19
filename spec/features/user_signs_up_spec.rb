@@ -21,7 +21,7 @@ feature 'user registers', %Q{
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
     fill_in 'Username', with: 'username'
-    fill_in 'User photo', with: 'userphoto'
+    fill_in 'User photo', with: 'https://muralis-development.s3.amazonaws.com/uploads/mural/photo/19/IMG_2570.jpg'
 
     click_button 'Sign up'
 
