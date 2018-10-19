@@ -5,7 +5,20 @@ class MuralShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mural: {}
+      mural: {
+        "id": 0,
+        "title": "",
+        "description": "",
+        "location": "",
+        "photo": {
+          "url": ""
+        },
+        "upvotes": 0,
+        "downvotes": 0,
+        "user_id": 0,
+        "created_at": "",
+        "updated_at": ""
+      }
     }
   }
 
