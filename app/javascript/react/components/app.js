@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
-import MuralsShowContainer from '../containers/MuralsShowContainer';
+import MuralShowContainer from '../containers/MuralShowContainer';
 
 const App = (props) => {
   return (
     <div>
       <Router history={browserHistory}>
-        <Route path='/murals/:id' component={MuralsShowContainer} />
+        <Route path='/murals/:id' component={MuralShowContainer} />
       </Router>
     </div>
   );

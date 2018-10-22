@@ -1,25 +1,34 @@
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
-import MuralsShowContainer from '../../../../app/javascript/react/containers/MuralsShowContainer';
+import MuralShowContainer from '../../../../app/javascript/react/containers/MuralShowContainer';
 import MuralShow from '../../../../app/javascript/react/components/MuralShow';
 import fetchMock from 'fetch-mock'
 
 describe('MuralShow', () => {
   let wrapper;
-
+  let mural;
   beforeEach(() => {
     jasmineEnzyme();
 
+    mural = {
+      id: 1,
+      title: "Mona Lisa",
+      description: "She smiles",
+      location: "The Louvre",
+      photo: '/assets/funny_mona_lisa.jpg',
+      upvotes: 0,
+      downvotes: 0,
+      user_id: 1
+    }
+
     wrapper = mount(
       <MuralShow
-        title="Mona Lisa"
-        description="She smiles"
-        location="The Louvre"
-        photo='/assets/funny_mona_lisa.jpg'
+        mural = {mural}
       />
     );
   });
+
 
   it('should render an h1 tag', () => {
     expect(wrapper.find('h1')).toBePresent();

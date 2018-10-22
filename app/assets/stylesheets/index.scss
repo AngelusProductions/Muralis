@@ -1,40 +1,33 @@
 #navbar-text, h1, body, button, #sign a {
   font-family: "Andale Mono";
 }
-
-.top-bar {
+ .top-bar {
   background-color: #6D6A75;
   border-radius: 25px;
 }
-
-#sign a {
+ #sign a {
     background-color: #6D6A75;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
 }
-
-#sign #sign-up a {
+ #sign #sign-up a {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
-
-.flash {
-  color: red;
-  background-color: white;
+ .flash {
+  color: #FF0000;
+  background-color: #FFF;
   border-radius: 10px;
 }
-
-body {
+ body {
   margin: auto;
   text-align: center;
   background-color: #37323E;
 }
-
-h1 {
-  color: white;
+ h1 {
+  color: #FFF;
 }
-
-img {
+ img {
   max-width: 50%;
   max-height: 50%;
   border-radius: 50px;
@@ -42,25 +35,20 @@ img {
   border-width: .75rem;
   border-color: #FFF;
 }
-
-img:hover {
+ img:hover {
   border-color: #6D6A75;
 }
-
-#feed-item {
+ #feed-item {
   margin-top: 3rem;
 }
-
-.mural-feed {
+ .mural-feed {
   list-style: none;
 }
-
-li {
+ li {
   font-size: 2vw;
-  color: white;
+  color: #FFF;
 }
-
-button {
+ button {
   border-radius: 17px;
   background-color: #6D6A75;
   margin-top: 3rem;
@@ -68,7 +56,6 @@ button {
     color: #DE9E36;
   }
 }
-
-button:hover {
-  background-color: white;
+ button:hover {
+  background-color: #FFF;
 }
