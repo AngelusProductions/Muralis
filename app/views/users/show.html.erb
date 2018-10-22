@@ -8,6 +8,9 @@
     <%= mural.title %> - <%= mural.location %>
     <img src="<%= mural.photo %>">
     <%= mural.description %>
+    <% if current_user.id == mural.user_id %>
+    <button><%= link_to "Edit", edit_mural_path %></button>
+    <% end %>
   </li>
 <% end %>
 </ul>

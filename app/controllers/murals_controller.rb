@@ -20,6 +20,20 @@ class MuralsController < ApplicationController
     end
   end
 
+  def edit
+    binding.pry
+    @mural = Mural.find(params[:id])
+  end
+
+  def update
+    @mural = Mural.find(params[:id])
+    if @mural.update_attributes(mural_params)
+      redirect_to "/users/#{@mural.user_id}", notice: 'Mural was edited successfully'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def mural_params
