@@ -1,7 +1,9 @@
+
 <p>Index Page!</p>
   <ul>
     <% @murals.each do |mural| %>
     <li><%= mural.title %></li>
+    <img src=" <%= mural.photo.url %> " alt=" <%= mural.description %> ">
     <% end %>
   </ul>
 
