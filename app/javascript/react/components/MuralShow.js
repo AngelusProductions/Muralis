@@ -7,7 +7,7 @@ const MuralShow = (props) => {
     <div>
       <h1>{props.mural.title}</h1>
       <h5>location: {props.mural.location}</h5>
-      <img src={props.mural.photo} />
+      <img src={props.mural.photo.url} />
       <p>{props.mural.description}</p>
     </div>
   )
