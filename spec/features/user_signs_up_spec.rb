@@ -14,6 +14,7 @@ feature 'user registers', %Q{
 
   scenario 'provide valid registration information' do
     visit new_user_registration_path
+    src_file = File.new("#{Rails.root}/spec/support/images/Josh_Headshot_September18_under_1MB.jpg")
 
     fill_in 'First name', with: 'John'
     fill_in 'Last name', with: 'Doe'
@@ -21,7 +22,7 @@ feature 'user registers', %Q{
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
     fill_in 'Username', with: 'username'
-    fill_in 'User photo', with: 'https://muralis-development.s3.amazonaws.com/uploads/mural/photo/19/IMG_2570.jpg'
+
 
     click_button 'Sign up'
 

@@ -1,6 +1,5 @@
 require "rails_helper"
 
-
 feature "visitors can add new murals" do
   scenario "user adds new mural successfully" do
     @user = User.create!(first_name: "Josh",last_name: "Wyman",email:"google2@gmail.com",password:"123456")
@@ -9,10 +8,12 @@ feature "visitors can add new murals" do
     visit new_mural_path
     expect(page).to have_content "New Mural Form"
 
+    photo = "#{Rails.root}/spec/support/images/Josh_Headshot_September18_under_1MB.jpg"
+
     fill_in 'Title', with: "Basquiat"
     fill_in 'Description', with: "Test Desc"
     fill_in 'Location', with: "The Barbican"
-    fill_in 'Photo', with: "photo"
+    attach_file "Photo", photo
 
     click_button "Add Mural"
 

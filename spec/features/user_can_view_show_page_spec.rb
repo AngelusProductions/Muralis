@@ -6,12 +6,13 @@ feature 'user can view show page', %Q{
   So that I can view my uploaded user information
 } do
   scenario 'specify valid credentials' do
+    src_file = File.new("#{Rails.root}/spec/support/images/Josh_Headshot_September18_under_1MB.jpg")
     user = FactoryBot.create(:user)
-    mural = Mural.create!({
+    mural = Mural.create({
       title: "title",
       description: "description",
       location: "location",
-      photo: "https://muralis-development.s3.amazonaws.com/uploads/mural/photo/19/IMG_2570.jpg",
+      photo: src_file,
       upvotes: 0,
       downvotes: 0,
       user_id: user.id
@@ -19,13 +20,12 @@ feature 'user can view show page', %Q{
 
     visit user_path(user.id)
 
-    binding.pry
-
-    expect(page).to have_content('Josh Wyman')
-    expect(page).to have_content('bigfootLumberjack34')
-    expect(page).to have_content('Street Art in NH')
-    expect(page).to have_content('Saw this on my way to work')
-    expect(page).to have_content('Grandmum\'s')
+    expect(page).to have_content(user.first_name)
+    expect(page).to have_content(user.last_name)
+    expect(page).to have_content(user.username)
+    expect(page).to have_content('title')
+    expect(page).to have_content('description')
+    expect(page).to have_content('location')
   end
 
 end
