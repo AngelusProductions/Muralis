@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   root 'murals#index'
 
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
-  resources :murals
+
+  resources :murals, only: [:index, :new, :create, :show]
+
+  namespace :api do
+    namespace :v1 do
+      resources :murals, only: [:index, :show]
+    end
+  end
+
 end
