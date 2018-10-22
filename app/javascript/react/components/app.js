@@ -1,7 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { Route, IndexRoute, Router, browserHistory } from 'react-router';
+import MuralShowContainer from '../containers/MuralShowContainer';
 
-export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+const App = (props) => {
+  return (
+    <div>
+      <Router history={browserHistory}>
+        <Route path='/murals/:id' component={MuralShowContainer} />
+      </Router>
+    </div>
+  );
 }
 
-export default App
+export default App;

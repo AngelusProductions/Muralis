@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Mural do
   src_file = File.new("#{Rails.root}/spec/support/images/Josh_Headshot_September18_under_1MB.jpg")
@@ -12,6 +12,10 @@ describe Mural do
   it  { should have_valid(:location).when("Over There") }
   it  { should_not have_valid(:location).when(nil, "") }
 
+<<<<<<< HEAD
+=======
+  src_file = File.new("#{Rails.root}/spec/support/images/BasqWarhol.jpeg")
+>>>>>>> e73e5fe5551551b61a524c46551dbe4159be8870
   it  { should have_valid(:photo).when(src_file) }
   it  { should_not have_valid(:photo).when(nil, "") }
 
