@@ -18,10 +18,14 @@ describe('MuralShowContainer', () => {
       title: "Mona Lisa",
       description: "She smiles",
       location: "The Louvre",
-      photo: '/assets/funny_mona_lisa.jpg',
+      photo: {
+        url: '/assets/funny_mona_lisa.jpg'
+      },
       upvotes: 0,
       downvotes: 0,
-      user_id: 1
+      user_id: 1,
+      updated_at: "",
+      created_at: ""
     }
 
     fetchMock.get(`/api/v1/murals/${mural.id}`, {
@@ -38,8 +42,22 @@ describe('MuralShowContainer', () => {
   afterEach(fetchMock.restore)
 
   it('should render state with murals object empty', () => {
-    expect(wrapper.state()).toEqual({ mural: {} });
-  })
+    expect(wrapper.state()).toEqual({ mural: {
+        id: 0,
+        title: "",
+        description: "",
+        location: "",
+        photo: {
+          url: '',
+          },
+        upvotes: 0,
+        downvotes: 0,
+        user_id: 0,
+        updated_at: "",
+        created_at: ""
+        }
+      });
+    })
 
   it('should render a Mural Component', () => {
     expect(wrapper.find(MuralShow)).toBePresent();
