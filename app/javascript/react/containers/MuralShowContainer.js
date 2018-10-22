@@ -5,7 +5,6 @@ class MuralShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
       mural: {
         "id": 0,
         "title": "",
@@ -20,9 +19,6 @@ class MuralShowContainer extends Component {
         "created_at": "",
         "updated_at": ""
       }
-=======
-      mural: {}
->>>>>>> 724d0f8397c809acb3a99711ca505b561c5d2eb2
     }
   }
 

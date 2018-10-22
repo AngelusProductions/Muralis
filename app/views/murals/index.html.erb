@@ -1,9 +1,11 @@
 
-<p>Index Page!</p>
-  <ul>
+<h1>Feed</h1>
+  <ul class="mural-feed large-12">
     <% @murals.each do |mural| %>
-    <li><%= mural.title %></li>
-    <img src=" <%= mural.photo.url %> " alt=" <%= mural.description %> ">
+      <div id="feed-item">
+        <li><%= mural.title %></li>
+        <img src=" <%= mural.photo.url %> " alt=" <%= mural.description %> ">
+      </div>
     <% end %>
   </ul>
 
