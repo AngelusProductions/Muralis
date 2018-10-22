@@ -21,8 +21,8 @@ class MuralsController < ApplicationController
   end
 
   def edit
-    binding.pry
     @mural = Mural.find(params[:id])
+    @user = @mural.user_id
   end
 
   def update
@@ -32,6 +32,13 @@ class MuralsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @murals = Mural.all
+    user_id = Mural.find(params[:id]).user_id
+    Mural.destroy(params[:id])
+    redirect_to "/users/#{user_id}"
   end
 
   private
