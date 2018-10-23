@@ -7,8 +7,9 @@ require 'rails_helper'
 feature "visitor sees a list of murals" do
   scenario "sees a list of murals" do
     testuser = User.create!(first_name: 'Name', last_name: 'last', email: 'happyboi@gmail', password: '12345678')
-    mural_1 = Mural.create!(title: 'Dumpling King', description: 'Dumps for days', location: 'Boston', user_id: testuser.id, photo: '12111')
-    mural_2 = Mural.create!(title: 'Donut Boy', description: 'Dodos for days', location: 'Boston', user_id: testuser.id, photo: '13333')
+    src_file = File.new("#{Rails.root}/spec/support/images/BasqWarhol.jpeg")
+    mural_1 = Mural.create!(title: 'Dumpling King', description: 'Dumps for days', location: 'Boston', user_id: testuser.id, photo: src_file)
+    mural_2 = Mural.create!(title: 'Donut Boy', description: 'Dodos for days', location: 'Boston', user_id: testuser.id, photo: src_file)
 
     visit murals_path
 

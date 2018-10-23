@@ -16,10 +16,14 @@ describe('MuralShow', () => {
       title: "Mona Lisa",
       description: "She smiles",
       location: "The Louvre",
-      photo: '/assets/funny_mona_lisa.jpg',
+      photo: {
+        url: '/assets/funny_mona_lisa.jpg'
+      },
       upvotes: 0,
       downvotes: 0,
-      user_id: 1
+      user_id: 1,
+      updated_at: "",
+      created_at: ""
     }
 
     wrapper = mount(
