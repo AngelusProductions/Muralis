@@ -6,7 +6,7 @@ feature 'user can view show page', %Q{
   So that I can view my uploaded user information
 } do
   scenario 'specify valid credentials' do
-    src_file = File.new("#{Rails.root}/spec/support/images/Josh_Headshot_September18_under_1MB.jpg")
+    src_file = File.new("#{Rails.root}/spec/support/images/BasqWarhol.jpeg")
     user = FactoryBot.create(:user)
     mural = Mural.create({
       title: "title",

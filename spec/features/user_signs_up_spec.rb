@@ -14,7 +14,7 @@ feature 'user registers', %Q{
 
   scenario 'provide valid registration information' do
     visit new_user_registration_path
-    src_file = File.new("#{Rails.root}/spec/support/images/Josh_Headshot_September18_under_1MB.jpg")
+    src_file = File.new("#{Rails.root}/spec/support/images/BasqWarhol.jpeg")
 
     fill_in 'First name', with: 'John'
     fill_in 'Last name', with: 'Doe'

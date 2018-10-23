@@ -1,7 +1,7 @@
 require 'factory_bot'
 
 FactoryBot.define do
-  photo = "#{Rails.root}/spec/support/images/BasqWarhol.jpeg"
+  photo = File.new("#{Rails.root}/spec/support/images/BasqWarhol.jpeg")
 
   factory :user do
     sequence(:email) {|n| "user#{n}@example.com" }
