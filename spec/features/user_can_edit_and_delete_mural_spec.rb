@@ -22,6 +22,7 @@ feature 'user can edit and delete mural', %Q{
 
     visit edit_mural_path(mural.id)
 
+    binding.pry
     click_button "Edit"
 
     expect(page).to have_content('Title')
@@ -33,7 +34,8 @@ feature 'user can edit and delete mural', %Q{
     fill_in 'Description', with: "Test Desc"
     fill_in 'Location', with: "The Barbican"
 
-    click_button "Edit Mural"
+    binding.pry
+    click_link "Edit Mural"
 
     expect(page).to have_content "Mural was edited successfully"
     expect(page).to have_content "Basquiat"

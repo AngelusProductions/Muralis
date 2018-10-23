@@ -5,6 +5,7 @@ class MuralPhotoUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.test?
+    binding.pry
     storage :file
   else
     storage :fog
