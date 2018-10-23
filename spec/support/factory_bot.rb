@@ -7,10 +7,10 @@ FactoryBot.define do
     sequence(:email) {|n| "user#{n}@example.com" }
     password { 'password' }
     password_confirmation { 'password' }
-    first_name { 'name' }
-    last_name { 'name' }
+    first_name { 'Jerry' }
+    last_name { 'Seinfeld' }
     user_photo { photo }
-    username { 'user' }
+    username { 'JSeinfeld' }
   end
 
 end

@@ -9,9 +9,9 @@ feature 'user can edit and delete mural', %Q{
     src_file = File.new("#{Rails.root}/spec/support/images/BasqWarhol.jpeg")
     user = FactoryBot.create(:user)
     mural = Mural.create({
-      title: "title",
-      description: "description",
-      location: "location",
+      title: "Nirvana of Boston",
+      description: "the best mural ever",
+      location: "funky town",
       photo: src_file,
       upvotes: 0,
       downvotes: 0,
@@ -20,22 +20,20 @@ feature 'user can edit and delete mural', %Q{
 
     sign_in user
 
-    visit edit_mural_path(mural.id)
+    visit user_path(user.id)
 
-    binding.pry
-    click_button "Edit"
-
-    expect(page).to have_content('Title')
-    expect(page).to have_content('Description')
-    expect(page).to have_content('Location')
+    click_link "Edit"
+    expect(page.find("input#mural_title").value).to eq(mural.title)
+    expect(page.find("input#mural_description").value).to eq(mural.description)
+    expect(page.find("input#mural_location").value).to eq(mural.location)
     expect(page).to have_content('Photo')
 
     fill_in 'Title', with: "Basquiat"
     fill_in 'Description', with: "Test Desc"
     fill_in 'Location', with: "The Barbican"
+    attach_file :mural_photo, "#{Rails.root}/spec/support/images/BasqWarhol.jpeg"
 
-    binding.pry
-    click_link "Edit Mural"
+    click_button "Edit Mural"
 
     expect(page).to have_content "Mural was edited successfully"
     expect(page).to have_content "Basquiat"
@@ -47,9 +45,9 @@ feature 'user can edit and delete mural', %Q{
     user = FactoryBot.create(:user)
     src_file = File.new("#{Rails.root}/spec/support/images/BasqWarhol.jpeg")
     mural = Mural.create({
-      title: "title",
-      description: "description",
-      location: "location",
+      title: "Nirvana of Boston",
+      description: "the best mural ever",
+      location: "funky town",
       photo: src_file,
       upvotes: 0,
       downvotes: 0,
@@ -60,10 +58,11 @@ feature 'user can edit and delete mural', %Q{
 
     visit user_path(user.id)
 
-    click_button "Destroy"
+    click_link "Destroy"
 
     expect(page).to have_content "Mural was deleted successfully"
-    expect("description").not_to be_present
-    expect("location").not_to be_present
+    expect(page).not_to have_content mural.title
+    expect(page).not_to have_content mural.description
+    expect(page).not_to have_content mural.location
   end
 end
