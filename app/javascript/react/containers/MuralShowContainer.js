@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MuralShow from '../components/MuralShow';
+import ReviewTile from '../components/ReviewTile';
 
 class MuralShowContainer extends Component {
   constructor(props) {
@@ -18,8 +19,51 @@ class MuralShowContainer extends Component {
         "user_id": 0,
         "created_at": "",
         "updated_at": ""
-      }
+      },
+    reviews: [],
+    comment: "",
+    rating: "1",
+    currentUser:{
+      id: 0,
+      first_name: "",
+      last_name: "",
+      user_photo: "",
+      username: "",
+      email: "",
+      created_at: "",
+      updated_at: ""
     }
+
+    }
+    this.handleCommentChange = this.handleCommentChange.bind(this);
+    this.handleRatingChange = this.handleRatingChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitNewReview = this.submitNewReview.bind(this);
+    this.getReviews = this.getReviews.bind(this);
+  }
+
+  getReviews(){
+    return fetch(`/api/v1/reviews`)
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let relevantReviews = []
+      body.forEach((review) => {
+        if(this.state.mural.id == review.mural_id){
+          relevantReviews.push(review)
+        }
+      })
+      this.setState({ reviews: relevantReviews });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount() {
@@ -36,15 +80,96 @@ class MuralShowContainer extends Component {
       .then(response => response.json())
       .then(body => {
         this.setState({ mural: body });
+        this.getReviews()
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
+
+    fetch(`/api/v1/user`)
+      .then(response => {
+          if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ currentUser: body });
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
+
+
+  handleCommentChange(evt){
+    this.setState({comment: evt.target.value})
   }
 
+  handleRatingChange(evt){
+    this.setState({rating: evt.target.value})
+  }
+
+  handleSubmit(event){
+    event.preventDefault()
+    let payloadRating = parseInt(this.state.rating,10)
+    let review = {
+      comment:this.state.comment,
+      rating:payloadRating,
+      user_id:this.state.currentUser.id,
+      mural_id:this.state.mural.id
+    }
+    this.submitNewReview(review)
+  }
+
+  submitNewReview(payload){
+    fetch ('/api/v1/reviews', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      credentials: 'same-origin',
+      headers: {
+       'Content-Type': 'application/json',
+       'X-Requested-With': 'XMLHttpRequest'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let newReviews = this.state.reviews.concat(body)
+      this.setState({ reviews :newReviews })
+    })
+    .catch(error => console.error('Error:', error));
+  }
+
+
   render() {
+    let outputReviews = this.state.reviews.map((review) => {
+      return(
+        <li key={review.id} className ="reviewList"><p>Comment: {review.comment} || Rating: {review.rating}</p></li>
+      )
+    })
+
     return(
-      <MuralShow
-        mural = {this.state.mural}
-       />
+      <div>
+        <MuralShow
+          mural = {this.state.mural}
+          />
+        {outputReviews}
+        <ReviewTile
+          fieldValue={this.state.comment}
+          commentChangeHandler={this.handleCommentChange}
+          ratingChangeHandler ={this.handleRatingChange}
+          submitHandler={this.handleSubmit}
+          />
+      </div>
     )
   }
 }
