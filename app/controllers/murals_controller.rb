@@ -22,13 +22,13 @@ class MuralsController < ApplicationController
 
   def edit
     @mural = Mural.find(params[:id])
-    @user = @mural.user_id
+    @user = User.find(@mural.user_id)
   end
 
   def update
     @mural = Mural.find(params[:id])
     if @mural.update_attributes(mural_params)
-      redirect_to "/users/#{@mural.user_id}", notice: 'Mural was edited successfully'
+      redirect_to "/users/#{@mural.user_id}", notice: "Mural was edited successfully"
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class MuralsController < ApplicationController
     @murals = Mural.all
     user_id = Mural.find(params[:id]).user_id
     Mural.destroy(params[:id])
-    redirect_to "/users/#{user_id}"
+    redirect_to "/users/#{user_id}", notice: "Mural was deleted successfully"
   end
 
   private

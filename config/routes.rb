@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :murals, only: [:index, :new, :create, :show]
+  resources :users, only: [:show]
+
+  resources :murals
 
   namespace :api do
     namespace :v1 do
