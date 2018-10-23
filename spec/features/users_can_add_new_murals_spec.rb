@@ -13,7 +13,11 @@ feature "visitors can add new murals" do
     fill_in 'Title', with: "Basquiat"
     fill_in 'Description', with: "Test Desc"
     fill_in 'Location', with: "The Barbican"
+<<<<<<< HEAD
     attach_file "Photo", photo
+=======
+    attach_file "Photo", "#{Rails.root}/spec/support/images/BasqWarhol.jpeg"
+>>>>>>> 22d119ba1bcec916de77ec22eed19db6f500c52b
 
     click_button "Add Mural"
 
