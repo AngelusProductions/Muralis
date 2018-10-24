@@ -3,7 +3,6 @@ require 'rails_helper'
 describe Mural do
   src_file = File.new("#{Rails.root}/spec/support/images/BasqWarhol.jpeg")
 
-
   it  { should have_valid(:title).when("Mural") }
   it  { should_not have_valid(:title).when(nil, "") }
 
