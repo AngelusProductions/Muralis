@@ -21,7 +21,6 @@ feature 'user registers', %Q{
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
     fill_in 'Username', with: 'username'
-    fill_in 'User photo', with: 'userphoto'
 
     click_button 'Sign up'
 

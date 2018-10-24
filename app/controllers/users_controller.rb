@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @name = "#{@user.first_name} #{@user.last_name}"
+  end
+
   private
 
   def user_params

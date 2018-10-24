@@ -1,0 +1,17 @@
+#user-photo {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  border: 3px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+h1, h5 {
+  display: inline-block;
+}
+
+ul {
+  text-align: center;
+  list-style: none;
+}

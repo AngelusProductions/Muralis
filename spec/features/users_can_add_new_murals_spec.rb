@@ -1,6 +1,5 @@
 require "rails_helper"
 
-
 feature "visitors can add new murals" do
   scenario "user adds new mural successfully" do
     @user = User.create!(first_name: "Josh",last_name: "Wyman",email:"google2@gmail.com",password:"123456")
