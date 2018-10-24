@@ -41,6 +41,13 @@ class MuralsController < ApplicationController
     redirect_to "/users/#{user_id}", notice: "Mural was deleted successfully"
   end
 
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      flash[:notice] = "You do not have access to this page."
+      redirect_to root_path
+    end
+  end
+
   private
 
   def mural_params
