@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MuralShow from '../components/MuralShow';
+import ReviewForm from '../components/ReviewForm';
 import ReviewTile from '../components/ReviewTile';
 import { ToastContainer } from 'react-toastify';
 import toast from '../components/toast.js'
@@ -87,34 +88,53 @@ class MuralShowContainer extends Component {
       .then(response => response.json())
       .then(body => {
         this.setState({ mural: body });
-        this.getReviews()
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
-
-    fetch(`/api/v1/user`)
-      .then(response => {
-          if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        this.setState({ currentUser: body });
+        fetch(`/api/v1/user`)
+          .then(response => {
+              if (response.ok) {
+              return response;
+            } else {
+              let errorMessage = `${response.status} (${response.statusText})`,
+                  error = new Error(errorMessage);
+              throw(error);
+            }
+          })
+          .then(response => response.json())
+          .then(body => {
+            this.setState({ currentUser: body });
+            fetch(`/api/v1/reviews`)
+            .then(response => {
+              if (response.ok) {
+                return response;
+              } else {
+                let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage);
+                throw(error);
+              }
+            })
+            .then(response => response.json())
+            .then(body => {
+              let relevantReviews = []
+              body.forEach((review) => {
+                if(this.state.mural.id == review.mural_id){
+                  relevantReviews.push(review)
+                }
+              })
+              this.setState({ reviews: relevantReviews });
+            })
+            .catch(error => console.error(`Error in fetch: ${error.message}`));
+          })
+          .catch(error => console.error(`Error in fetch: ${error.message}`));
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
 
 
-  handleCommentChange(evt){
-    this.setState({comment: evt.target.value})
+  handleCommentChange(event){
+    this.setState({comment: event.target.value})
   }
 
-  handleRatingChange(evt){
-    this.setState({rating: evt.target.value})
+  handleRatingChange(event){
+    this.setState({rating: event.target.value})
   }
 
   handleSubmit(event){
@@ -161,7 +181,11 @@ class MuralShowContainer extends Component {
   render() {
     let outputReviews = this.state.reviews.map((review) => {
       return(
-        <li key={review.id} className ="reviewList"><p>Comment: {review.comment} || Rating: {review.rating}</p></li>
+        <ReviewTile
+          key={review.id}
+          comment= {review.comment}
+          rating= {review.rating}
+        />
       )
     })
 
@@ -172,7 +196,7 @@ class MuralShowContainer extends Component {
           mural = {this.state.mural}
           />
         {outputReviews}
-        <ReviewTile
+        <ReviewForm
           fieldValue={this.state.comment}
           commentChangeHandler={this.handleCommentChange}
           ratingChangeHandler ={this.handleRatingChange}

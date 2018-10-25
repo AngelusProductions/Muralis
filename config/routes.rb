@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :admins
   root 'murals#index'
 
   devise_for :users
-
-  resources :murals, only: [:index, :new, :create, :show] do
+  resources :users, only: [:index, :create, :show]
+  resources :murals do
     resources :reviews, only: [:new, :create]
   end
 
