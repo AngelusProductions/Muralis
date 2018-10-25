@@ -38,15 +38,6 @@ describe('MuralShowContainer', () => {
         updated_at: "",
         mural_id: 1,
         user_id: 1
-      },
-      {
-        id: 2,
-        comment: "This mural is incredible!",
-        rating: 10,
-        created_at: "",
-        updated_at: "",
-        mural_id: 1,
-        user_id: 1
       }
     ]
     currentUser = {
@@ -102,12 +93,15 @@ describe('MuralShowContainer', () => {
   it('should render a Mural Component', () => {
     expect(wrapper.find(MuralShow)).toBePresent();
   });
-// syntax for testing props in implementing react tests/elephant
-  it('should render correct text after the fetch call', (done) => {
+  
+  it('should render correct components after the fetch calls are finished', (done) => {
     setTimeout( () => {
       expect(wrapper.find('MuralShow').find('h1').text()).toMatch(mural.title)
       expect(wrapper.find('MuralShow').find('h5').text()).toMatch(mural.location)
       expect(wrapper.find('MuralShow').find('p').text()).toMatch(mural.description)
+      expect(wrapper.find('ReviewTile').find('p').text()).toMatch(reviews[0].comment)
+      expect(wrapper.find('ReviewTile').find('p').text()).toContain(reviews[0].rating)
+      expect(wrapper.find('ReviewForm').find('form').simulate('submit'))
       done()
     }, 0)
   });
