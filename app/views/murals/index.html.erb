@@ -4,7 +4,7 @@
     <% @murals.each do |mural| %>
       <div id="feed-item">
         <li><%= mural.title %></li>
-        <img src=" <%= mural.photo.url %> " alt=" <%= mural.description %> ">
+        <a href="<%= mural_path(mural) %>"><img src="<%= mural.photo.url %>" alt="<%= mural.description %>"></a>
       </div>
     <% end %>
   </ul>
