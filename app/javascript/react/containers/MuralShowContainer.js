@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import MuralShow from '../components/MuralShow';
 import ReviewTile from '../components/ReviewTile';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import toast from '../components/toast.js'
+
 
 class MuralShowContainer extends Component {
   constructor(props) {
