@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root 'murals#index'
 
   devise_for :users
-  resources :users, only: [:show]
-  resources :murals, only: [:index, :new, :create, :show] do
+  resources :users
+  resources :murals do
     resources :reviews, only: [:new, :create]
   end
 
