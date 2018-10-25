@@ -10,3 +10,15 @@
   display: block;
   margin: auto;
 }
+#reviewForm {
+  input {
+    border-radius: 25px;
+  }
+  select {
+    border-radius: 25px;
+  }
+}
+
+#new-comment-button {
+  background-color: #6D6A75;
+}
