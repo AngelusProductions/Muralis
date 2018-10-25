@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MuralShow from '../components/MuralShow';
 import ReviewTile from '../components/ReviewTile';
+import { ToastContainer, toast } from 'react-toastify';
 
 class MuralShowContainer extends Component {
   constructor(props) {
@@ -40,8 +41,12 @@ class MuralShowContainer extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitNewReview = this.submitNewReview.bind(this);
     this.getReviews = this.getReviews.bind(this);
+    this.notify = this.notify.bind(this);
   }
 
+  notify(){
+    toast.success("You've successfully submitted a review!")
+  }
   getReviews(){
     return fetch(`/api/v1/reviews`)
     .then(response => {
@@ -145,6 +150,7 @@ class MuralShowContainer extends Component {
     .then(body => {
       let newReviews = this.state.reviews.concat(body)
       this.setState({ reviews :newReviews })
+      this.notify()
     })
     .catch(error => console.error('Error:', error));
   }
@@ -159,6 +165,7 @@ class MuralShowContainer extends Component {
 
     return(
       <div>
+        <ToastContainer />
         <MuralShow
           mural = {this.state.mural}
           />
