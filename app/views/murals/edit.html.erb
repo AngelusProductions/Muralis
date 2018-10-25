@@ -1,4 +1,4 @@
-<h4>Edit Mural</h4>
+<h4 id="form-title">Edit Mural</h4>
 
 <% if @mural.errors %>
   <div name = "errorDiv">
@@ -10,6 +10,7 @@
   </div>
 <% end %>
 
+<div id="mural-form">
 <%= form_for [@mural] do |f| %>
 
   <div class="field">
@@ -33,3 +34,4 @@
     <%= f.submit "Edit Mural" %>
   </div>
 <% end %>
+</div>

@@ -25,7 +25,7 @@ const ReviewForm = (props) => {
             <option value="10">10</option>
           </select>
         </label>
-        <input className="button" type="submit" value="Submit" onClick={props.submitHandler}/>
+        <input id="new-comment-button" className="button" type="submit" value="Submit" onClick={props.submitHandler}/>
       </form>
     </div>
   )
