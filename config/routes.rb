@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :murals
 
+  resources :users, only: [:show]
+
   namespace :api do
     namespace :v1 do
       resources :murals, only: [:index, :show]
