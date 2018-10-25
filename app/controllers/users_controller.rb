@@ -14,6 +14,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    @name = "#{@user.first_name} #{@user.last_name}"
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user && current_user.admin?
+  end
+
   private
 
   def user_params

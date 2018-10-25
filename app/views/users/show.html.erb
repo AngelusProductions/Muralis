@@ -1,0 +1,17 @@
+  <img id="user-photo" src=" <%= @user.user_photo.url %>">
+  <h1> <%= @name %> </h1>
+  <h5> <%= @user.username %></h5>
+
+<ul>
+<% @user.murals.each do |mural| %>
+  <li>
+    <%= mural.title %> - <%= mural.location %>
+    <img src="<%= mural.photo %>">
+    <%= mural.description %>
+    <% if current_user.id == mural.user_id || current_user.role == "admin" %>
+      <%= link_to "Edit", edit_mural_path(mural.id) %>
+      <%= link_to "Destroy", mural_path(mural), method: :delete %>
+    <% end %>
+  </li>
+<% end %>
+</ul>

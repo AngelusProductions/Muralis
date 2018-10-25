@@ -20,6 +20,33 @@ class MuralsController < ApplicationController
     end
   end
 
+  def edit
+    @mural = Mural.find(params[:id])
+    @user = User.find(@mural.user_id)
+  end
+
+  def update
+    @mural = Mural.find(params[:id])
+    if @mural.update_attributes(mural_params)
+      redirect_to "/users/#{@mural.user_id}", notice: "Mural was edited successfully"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    user_id = Mural.find(params[:id]).user_id
+    Mural.destroy(params[:id])
+    redirect_to "/users/#{user_id}", notice: "Mural was deleted successfully"
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      flash[:notice] = "You do not have access to this page."
+      redirect_to root_path
+    end
+  end
+
   private
 
   def mural_params
