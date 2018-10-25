@@ -14,6 +14,9 @@
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+.reviewList{
+  list-style: none;
+}
  .flash {
   color: #FF0000;
   background-color: #FFF;
@@ -58,4 +61,13 @@ img:hover, a img:hover {
 }
  button:hover {
   background-color: #FFF;
+}
+
+.form{
+  width: 60%;
+  margin: auto;
+  label {
+    color: #fff;
+    text-align: left;
+  }
 }
