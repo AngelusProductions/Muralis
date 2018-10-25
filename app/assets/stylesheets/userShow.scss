@@ -1,0 +1,28 @@
+#user-mural-list{
+  text-align: center;
+  color: #FFF;
+  margin: auto;
+}
+#user-mural{
+  color: #FFF;
+  display:block;
+  margin-top: 1.5rem;
+}
+#user-mural-image{
+  display: block;
+  margin: auto;
+}
+#user-photo-mural-page{
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  border: 3px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#name-mural-page{
+  display: block;
+}
+#username-mural-page{
+  color: #FFF;
+}

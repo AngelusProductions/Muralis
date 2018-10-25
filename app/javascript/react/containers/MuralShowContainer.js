@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import MuralShow from '../components/MuralShow';
 import ReviewForm from '../components/ReviewForm';
 import ReviewTile from '../components/ReviewTile';
+import { ToastContainer } from 'react-toastify';
+import toast from '../components/toast.js'
+
 
 class MuralShowContainer extends Component {
   constructor(props) {
@@ -40,6 +43,35 @@ class MuralShowContainer extends Component {
     this.handleRatingChange = this.handleRatingChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submitNewReview = this.submitNewReview.bind(this);
+    this.getReviews = this.getReviews.bind(this);
+    this.notify = this.notify.bind(this);
+  }
+
+  notify(){
+    toast.success("You've successfully submitted a review!")
+  }
+  getReviews(){
+    return fetch(`/api/v1/reviews`)
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      let relevantReviews = []
+      body.forEach((review) => {
+        if(this.state.mural.id == review.mural_id){
+          relevantReviews.push(review)
+        }
+      })
+      this.setState({ reviews: relevantReviews });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount() {
@@ -140,6 +172,7 @@ class MuralShowContainer extends Component {
     .then(body => {
       let newReviews = this.state.reviews.concat(body)
       this.setState({ reviews :newReviews })
+      this.notify()
     })
     .catch(error => console.error('Error:', error));
   }
@@ -158,6 +191,7 @@ class MuralShowContainer extends Component {
 
     return(
       <div>
+        <ToastContainer />
         <MuralShow
           mural = {this.state.mural}
           />
