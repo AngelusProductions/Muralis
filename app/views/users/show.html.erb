@@ -8,6 +8,10 @@
     <%= mural.title %> - <%= mural.location %>
     <img src="<%= mural.photo %>">
     <%= mural.description %>
+    <% if current_user.id == mural.user_id || current_user.role == "admin" %>
+      <%= link_to "Edit", edit_mural_path(mural.id) %>
+      <%= link_to "Destroy", mural_path(mural), method: :delete %>
+    <% end %>
   </li>
 <% end %>
 </ul>

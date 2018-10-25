@@ -8,6 +8,8 @@ feature "visitors can add new murals" do
     visit new_mural_path
     expect(page).to have_content "New Mural Form"
 
+    photo = "#{Rails.root}/spec/support/images/BasqWarhol.jpeg"
+
     fill_in 'Title', with: "Basquiat"
     fill_in 'Description', with: "Test Desc"
     fill_in 'Location', with: "The Barbican"

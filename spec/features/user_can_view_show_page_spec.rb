@@ -18,6 +18,8 @@ feature 'user can view show page', %Q{
       user_id: user.id
     })
 
+    sign_in user
+
     visit user_path(user.id)
 
     expect(page).to have_content(user.first_name)

@@ -1,0 +1,35 @@
+<h4>Edit Mural</h4>
+
+<% if @mural.errors %>
+  <div name = "errorDiv">
+    <ul name = "errors">
+      <% @mural.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for [@mural] do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, :value => @mural.title %>
+  </div>
+  <div class="field">
+    <%= f.label :photo %>
+    <%= f.file_field :photo, :value => @mural.photo %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description, :value => @mural.description %>
+  </div>
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location, :value => @mural.location %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Edit Mural" %>
+  </div>
+<% end %>
