@@ -35,7 +35,6 @@ class MuralsController < ApplicationController
   end
 
   def destroy
-    @murals = Mural.all
     user_id = Mural.find(params[:id]).user_id
     Mural.destroy(params[:id])
     redirect_to "/users/#{user_id}", notice: "Mural was deleted successfully"
