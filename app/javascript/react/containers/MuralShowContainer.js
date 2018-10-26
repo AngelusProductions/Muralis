@@ -140,8 +140,12 @@ class MuralShowContainer extends Component {
   handleSubmit(event){
     event.preventDefault()
     let payloadRating = parseInt(this.state.rating,10)
+    let commentCheck = this.state.comment;
+    if (commentCheck == ""){
+      commentCheck = "N/A";
+    }
     let review = {
-      comment:this.state.comment,
+      comment:commentCheck,
       rating:payloadRating,
       user_id:this.state.currentUser.id,
       mural_id:this.state.mural.id
